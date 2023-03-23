@@ -1,0 +1,262 @@
+.game-holder {
+    display: flex;
+}
+
+.question {
+    font-size: 32px;
+}
+
+.answer-holder {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.button-holder {
+    margin-bottom: 20px;
+    margin-right: 70px;
+    width: 40%;
+    position: relative;
+}
+
+.answer {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #D0D0D8;
+    display: flex;
+    align-items: center;
+    padding: 20px 15px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 12px;
+    z-index: 2;
+    outline: none;
+    font-size: 20px;
+    font-weight: 400;
+    transition: all .3s;
+}
+
+.letter {
+    color: #3891B1;
+    margin-right: 10px;
+}
+
+.answer:hover, .answer:hover::after, .answer:hover::before {
+    border-color: #1E6A8E;
+}
+
+.answer:hover + .divider {
+    background: #1E6A8E;
+}
+
+.answer.selected + .divider {
+    background: #FF8B37;
+}
+
+.answer.selected, .answer.selected::before, .answer.selected::after {
+    border-color: #FF8B37;
+    background: #FFF3EB;
+}
+
+.answer.correct, .answer.correct::before, .answer.correct::after {
+    border-color: #47D867;
+    background: #E6FAEA;
+}
+
+.answer.correct + .divider {
+    background: #47D867;
+}
+
+.answer.incorrect, .answer.incorrect::before, .answer.incorrect::after {
+    background: #FDEEED;
+    border-color: #EC6259;
+}
+
+.answer.incorrect + .divider {
+    background: #EC6259;
+}
+
+.answer::before, .answer::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -18px;
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    z-index: -1;
+    transform: rotate(45deg);
+    border-bottom: 1px solid #D0D0D8;
+    border-left: 1px solid #D0D0D8;
+    transition: all .3s;
+}
+
+.answer::after {
+    left: initial;
+    right: -18px;
+    transform: rotate(225deg);
+}
+
+.divider {
+    position: absolute;
+    width: 125%;
+    top: 50%;
+    transform: translate(-10%,-50%);
+    height: 1px;
+    background: #D0D0D8;
+    z-index: 0;
+    transition: all .3s;
+}
+
+.q-a-holder {
+    background: #E5E5E5;
+    min-height: calc(100vh - 140px);
+    display: flex;
+    padding: 70px;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 65%;
+    position: relative;
+}
+
+.burger {
+    display: none;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+}
+
+.level {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    overflow: hidden;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    display: none;
+    cursor: pointer;
+}
+
+.level-holder {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.level-item {
+    padding: 3px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    background: #fff;
+    border: 1px solid #D0D0D8;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 12px;
+    z-index: 2;
+    outline: none;
+    font-size: 20px;
+    font-weight: 400;
+    transition: all .3s;
+}
+
+.level-item::before, .level-item::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -5px;
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    z-index: -1;
+    transform: rotate(45deg);
+    border-bottom: 1px solid #D0D0D8;
+    border-left: 1px solid #D0D0D8;
+    transition: all .3s;
+}
+
+.level-item::after {
+    left: initial;
+    right: -5px;
+    transform: rotate(225deg);
+}
+
+.level-item.passed {
+    color: #D0D0D8;
+}
+
+.level-item + .divider {
+    width: 2000px;
+}
+
+.level-item.current, .level-item.current::after, .level-item.current::before, .level-item.current + .divider {
+    color: #fff;
+    background: #3891B1;
+}
+
+@media screen and (max-width: 756px) {
+    .close {
+        display: block;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .q-a-holder {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .question {
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .level {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .3s;
+        background: #E5E5E5;
+        z-index: 2;
+        width: 100%;
+    }
+
+    .level.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .button-holder {
+        width: 90%;
+        margin-right: 0;
+    }
+    .answer-holder {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .answer {
+        font-size: 14px;
+    }
+
+    .divider {
+        width: 2000px;
+    }
+}
